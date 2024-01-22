@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Weather App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Find the Weather</h1>
+    <form action='{% url 'home' %}' method='POST'>
+        {% csrf_token %}
+        <label for='city'>City:</label>
+        <input type="text" name='city' id='city' placeholder="Enter city...." />
+        <input type="submit" value="Submit" />
+    </form>
+
+    <div class="city">
+        <h1>{{ city }}</h1>
+        <h3>Country Code: {{ data.country_code }}</h3>
+        <h3>Coordinate: {{ data.coordinate }}</h3>
+        <h3>Temperature: {{ data.temp }}</h3>
+        <h3>Pressure: {{ data.pressure }}</h3>
+        <h3>Humidity: {{ data.humidity }}</h3>
+    </div>
+
+    <script src="" async defer></script>
+</body>
+</html>
